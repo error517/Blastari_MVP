@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Marketing Assistant & Plan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Apply Inter font globally */
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden; /* Prevent body scroll, columns will scroll */
+        }
+        /* Custom scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d1d5db; /* Gray */
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af; /* Darker Gray */
+        }
+        /* Ensure columns take full height and scroll independently */
+        .column-scroll {
+           height: calc(100vh - 60px); /* Adjust 60px based on actual header height */
+           overflow-y: auto;
+        }
+         /* Highlight active channel card */
+        .channel-card.active {
+            border-color: #8b5cf6; /* Purple border */
+            box-shadow: 0 4px 12px -1px rgb(139 92 246 / 0.2), 0 2px 8px -2px rgb(139 92 246 / 0.1);
+            background-color: #faf5ff; /* Very light purple */
+        }
+         /* Ensure chat area fills height */
+        .chat-area {
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Make sure parent has height */
+        }
+        .chat-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <header class="bg-white shadow-sm sticky top-0 z-10 h-[60px]">
+        <nav class="container mx-auto px-4 h-full flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-600 h-6 w-6"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                <span class="text-xl font-bold text-gray-800">Blastari</span>
+            </div>
+            <button class="text-sm font-medium text-purple-600 hover:text-purple-800 flex items-center space-x-1">
+                <i class="fas fa-user-circle mr-1"></i>
+                <span>Account</span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="flex h-[calc(100vh-60px)]"> <aside class="w-2/5 xl:w-1/3 bg-gray-50 border-r border-gray-200 column-scroll custom-scrollbar p-6 space-y-6">
+            <div>
+                <h1 class="text-xl font-semibold text-gray-900 mb-1">Marketing Plan Overview</h1>
+                <p class="text-sm text-gray-600">Recommended channels based on <span class="font-medium text-purple-700">[UserWebsite.com]</span>.</p>
+            </div>
+
+            <section class="space-y-4">
+                <h2 class="text-lg font-semibold text-gray-800">Recommended Channels</h2>
+
+                <div class="channel-card bg-white p-4 rounded-lg border border-gray-200 hover:shadow-md transition-all duration-200 cursor-pointer">
+                    <div class="flex justify-between items-start mb-2">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-search-dollar text-purple-600 text-xl fa-fw"></i>
+                            <div>
+                                <h3 class="text-md font-semibold text-gray-900">Search Engine Marketing</h3>
+                                <span class="text-xs bg-purple-100 text-purple-700 font-medium px-2 py-0.5 rounded">High Potential</span>
+                            </div>
+                        </div>
+                        <button class="text-gray-400 hover:text-gray-600 p-1 text-xs">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                    <p class="text-xs text-gray-600 mb-2"><span class="font-medium">Rationale:</span> High purchase intent keywords identified...</p>
+                    <div class="text-xs space-y-1 mb-3">
+                        <div><span class="font-medium text-gray-500">Goal:</span> 50 Leads/Mo</div>
+                        <div><span class="font-medium text-gray-500">Budget:</span> $500+</div>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <button class="bg-purple-100 text-purple-700 text-[11px] font-medium py-1 px-2 rounded-full hover:bg-purple-200 transition-colors duration-200">
+                            Action Steps
+                        </button>
+                        <button class="bg-gray-100 text-gray-600 text-[11px] font-medium py-1 px-2 rounded-full hover:bg-gray-200 transition-colors duration-200">
+                            Discuss
+                        </button>
+                         <button class="bg-gray-100 text-gray-600 text-[11px] font-medium py-1 px-2 rounded-full hover:bg-gray-200 transition-colors duration-200">
+                            Tools
+                        </button>
+                    </div>
+                </div>
+
+                <div class="channel-card bg-white p-4 rounded-lg border border-gray-200 hover:shadow-md transition-all duration-200 cursor-pointer active"> <div class="flex justify-between items-start mb-2">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-file-alt text-blue-600 text-xl fa-fw"></i>
+                            <div>
+                                <h3 class="text-md font-semibold text-gray-900">Content Marketing</h3>
+                                 <span class="text-xs bg-blue-100 text-blue-700 font-medium px-2 py-0.5 rounded">Growth</span>
+                            </div>
+                        </div>
+                         <button class="text-gray-400 hover:text-gray-600 p-1 text-xs">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                    <p class="text-xs text-gray-600 mb-2"><span class="font-medium">Rationale:</span> Build authority, attract organic traffic...</p>
+                     <div class="text-xs space-y-1 mb-3">
+                        <div><span class="font-medium text-gray-500">Goal:</span> +20% Traffic</div>
+                        <div><span class="font-medium text-gray-500">Effort:</span> High</div>
+                    </div>
+                     <div class="flex flex-wrap gap-1.5">
+                        <button class="bg-blue-100 text-blue-700 text-[11px] font-medium py-1 px-2 rounded-full hover:bg-blue-200 transition-colors duration-200">
+                            Action Steps
+                        </button>
+                        <button class="bg-gray-100 text-gray-600 text-[11px] font-medium py-1 px-2 rounded-full hover:bg-gray-200 transition-colors duration-200">
+                            Discuss
+                        </button>
+                         <button class="bg-gray-100 text-gray-600 text-[11px] font-medium py-1 px-2 rounded-full hover:bg-gray-200 transition-colors duration-200">
+                            Topics
+                        </button>
+                    </div>
+                </div>
+
+                 <div class="channel-card bg-white p-4 rounded-lg border border-gray-200 hover:shadow-md transition-all duration-200 cursor-pointer">
+                    <div class="flex justify-between items-start mb-2">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-bullhorn text-red-600 text-xl fa-fw"></i>
+                            <div>
+                                <h3 class="text-md font-semibold text-gray-900">Targeted Social Ads</h3>
+                                <span class="text-xs bg-red-100 text-red-700 font-medium px-2 py-0.5 rounded">Leads</span>
+                            </div>
+                        </div>
+                        <button class="text-gray-400 hover:text-gray-600 p-1 text-xs">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                    <p class="text-xs text-gray-600 mb-2"><span class="font-medium">Rationale:</span> Audience active on Platform X...</p>
+                     <div class="text-xs space-y-1 mb-3">
+                        <div><span class="font-medium text-gray-500">Goal:</span> 100 Demos</div>
+                        <div><span class="font-medium text-gray-500">Budget:</span> $1k+</div>
+                    </div>
+                     <div class="flex flex-wrap gap-1.5">
+                        <button class="bg-red-100 text-red-700 text-[11px] font-medium py-1 px-2 rounded-full hover:bg-red-200 transition-colors duration-200">
+                           Action Steps
+                        </button>
+                        <button class="bg-gray-100 text-gray-600 text-[11px] font-medium py-1 px-2 rounded-full hover:bg-gray-200 transition-colors duration-200">
+                            Discuss
+                        </button>
+                         <button class="bg-gray-100 text-gray-600 text-[11px] font-medium py-1 px-2 rounded-full hover:bg-gray-200 transition-colors duration-200">
+                            Audiences
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+             <section>
+                <h2 class="text-lg font-semibold text-gray-800 mb-3">Explore Other Channels</h2>
+                <div class="flex flex-wrap gap-2">
+                    <button class="text-xs bg-white border border-gray-300 text-gray-700 px-3 py-1 rounded-lg hover:bg-gray-50 transition duration-150">SEO</button>
+                    <button class="text-xs bg-white border border-gray-300 text-gray-700 px-3 py-1 rounded-lg hover:bg-gray-50 transition duration-150">Community</button>
+                    <button class="text-xs bg-white border border-gray-300 text-gray-700 px-3 py-1 rounded-lg hover:bg-gray-50 transition duration-150">Email</button>
+                    <button class="text-xs bg-white border border-gray-300 text-gray-700 px-3 py-1 rounded-lg hover:bg-gray-50 transition duration-150">Affiliates</button>
+                    </div>
+            </section>
+
+        </aside>
+
+        <main class="w-3/5 xl:w-2/3 bg-white flex flex-col column-scroll">
+            <div class="chat-area p-6 flex-grow flex flex-col">
+
+                <div class="pb-4 border-b border-gray-200 mb-4 flex items-center space-x-3">
+                     <i class="fas fa-robot text-2xl text-purple-600"></i>
+                     <div>
+                        <h2 id="chat-title" class="text-xl font-semibold text-gray-800">AI Marketing Assistant</h2>
+                        <p id="chat-context" class="text-sm text-gray-500">Ready to help refine your plan.</p>
+                     </div>
+                </div>
+
+                 <div class="mb-4 flex flex-wrap gap-2">
+                     <button class="flex items-center space-x-1.5 bg-purple-50 hover:bg-purple-100 text-purple-700 text-sm px-3 py-1.5 rounded-lg border border-purple-200 transition duration-150">
+                        <i class="fas fa-list-check"></i>
+                        <span>Summarize Recommended Plan</span>
+                    </button>
+                     <button class="flex items-center space-x-1.5 bg-gray-100 hover:bg-gray-200 text-gray-600 text-sm px-3 py-1.5 rounded-lg border border-gray-300 transition duration-150">
+                        <i class="fas fa-arrow-right"></i>
+                        <span>Suggest First Step</span>
+                    </button>
+                     <button class="flex items-center space-x-1.5 bg-gray-100 hover:bg-gray-200 text-gray-600 text-sm px-3 py-1.5 rounded-lg border border-gray-300 transition duration-150">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Brainstorm Ideas</span>
+                    </button>
+                 </div>
+
+
+                <div class="chat-messages flex-grow overflow-y-auto space-y-4 mb-4 pr-2 custom-scrollbar">
+                    <div class="flex justify-start max-w-lg"> <div class="bg-gray-100 text-gray-800 p-3 rounded-lg rounded-bl-none shadow-sm">
+                            <p class="text-sm">Welcome! I've analyzed your website and generated a preliminary marketing plan focusing on SEM, Content Marketing, and Social Ads (see details on the left). How can I help you refine this strategy today?</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-end">
+                         <div class="ml-auto max-w-lg"> <div class="bg-purple-600 text-white p-3 rounded-lg rounded-br-none shadow-sm">
+                                <p class="text-sm">Thanks! Let's start with the Content Marketing plan. Can you elaborate on the 'Pillar Post Topics' action step?</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="flex justify-start max-w-lg"> <div class="bg-gray-100 text-gray-800 p-3 rounded-lg rounded-bl-none shadow-sm">
+                            <p class="text-sm">Certainly. Pillar posts are comprehensive articles covering a broad topic within your niche. For your site focusing on [User's Business Niche], potential pillar topics could be: <br>1. The Ultimate Guide to [Core Niche Concept] <br>2. Comparing [Niche Tool A] vs. [Niche Tool B] <br>3. Future Trends in [Niche Industry] for 2025. <br><br>These serve as hubs, linking to more specific sub-topic blog posts later. Does that make sense?</p>
+                        </div>
+                    </div>
+                     </div>
+
+                <div class="mt-auto pt-4 border-t border-gray-200">
+                    <div class="relative flex items-center">
+                        <textarea id="chat-input" placeholder="Ask follow-up questions, request examples, or tell the AI what to change..." rows="3" class="w-full border border-gray-300 rounded-lg py-3 px-4 pr-12 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm resize-none custom-scrollbar"></textarea>
+                        <button class="absolute right-3 bottom-3 text-purple-600 hover:text-purple-800 disabled:text-gray-400 p-2" title="Send Message">
+                            <i class="fas fa-paper-plane text-lg"></i>
+                        </button>
+                    </div>
+                     <p class="text-xs text-gray-400 mt-1 text-center">AI can make mistakes. Consider checking important information.</p>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        // --- Basic JS for Interaction Simulation ---
+
+        const channelCards = document.querySelectorAll('.channel-card');
+        const chatTitle = document.getElementById('chat-title');
+        const chatContext = document.getElementById('chat-context');
+        const chatInput = document.getElementById('chat-input');
+        const chatMessagesContainer = document.querySelector('.chat-messages'); // Added
+
+        channelCards.forEach(card => {
+            // Clicking anywhere on the card highlights it and updates chat context
+            card.addEventListener('click', (event) => {
+                // Don't trigger if clicking a button inside the card
+                if (event.target.closest('button')) {
+                    return;
+                }
+                handleCardSelection(card);
+            });
+
+            // Find the "Discuss" button (or similar)
+            const discussButton = Array.from(card.querySelectorAll('button')).find(
+                btn => btn.textContent.includes('Discuss')
+            );
+
+            if (discussButton) {
+                 discussButton.addEventListener('click', () => {
+                    handleCardSelection(card); // Highlight card and set context
+                    chatInput.focus();
+                    // Optional: Pre-fill input or add a message indicating discussion start
+                    // chatInput.value = `Let's discuss the ${card.querySelector('h3').textContent} plan...`;
+                    addMessageToChat(`Okay, let's focus on the **${card.querySelector('h3').textContent}** plan. What specifically would you like to discuss or refine?`, 'ai');
+                });
+            }
+
+             // TODO: Add logic for "Action Steps", "Tools", "Topics" buttons
+             // This might involve showing a modal, or triggering a specific AI response in the chat.
+             // Example for Action Steps button:
+             const stepsButton = Array.from(card.querySelectorAll('button')).find(
+                btn => btn.textContent.includes('Action Steps')
+             );
+             if(stepsButton) {
+                 stepsButton.addEventListener('click', () => {
+                     handleCardSelection(card);
+                     const channelName = card.querySelector('h3').textContent;
+                     addMessageToChat(`Here are the suggested action steps for **${channelName}**: \n1. Step One...\n2. Step Two...\n3. Step Three... \n*(These are placeholders, replace with actual steps)*`, 'ai');
+                 });
+             }
+        });
+
+        // Function to handle card selection visual state and context update
+        function handleCardSelection(selectedCard) {
+             // Remove active state from all cards
+             channelCards.forEach(c => c.classList.remove('active'));
+             // Add active state to the clicked card
+             selectedCard.classList.add('active');
+
+             // Update chat context
+             const channelName = selectedCard.querySelector('h3').textContent;
+             // chatTitle.textContent = `AI Marketing Assistant`; // Keep title general?
+             chatContext.textContent = `Context: Discussing ${channelName}. Ask questions or suggest changes.`;
+        }
+
+        // Function to add a message to the chat (for simulation)
+        function addMessageToChat(text, sender = 'user') {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('flex', sender === 'user' ? 'justify-end' : 'justify-start');
+            messageDiv.classList.add(sender === 'user' ? 'ml-auto' : 'mr-auto', 'max-w-lg'); // Adjusted width
+
+            const bubbleDiv = document.createElement('div');
+            bubbleDiv.classList.add('p-3', 'rounded-lg', 'shadow-sm');
+            bubbleDiv.classList.add(sender === 'user' ? 'bg-purple-600' : 'bg-gray-100');
+            bubbleDiv.classList.add(sender === 'user' ? 'text-white' : 'text-gray-800');
+            bubbleDiv.classList.add(sender === 'user' ? 'rounded-br-none' : 'rounded-bl-none');
+
+            // Basic Markdown support (bold and newlines)
+            let htmlContent = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // Bold
+            htmlContent = htmlContent.replace(/\n/g, '<br>'); // Newlines
+
+            bubbleDiv.innerHTML = `<p class="text-sm">${htmlContent}</p>`;
+            messageDiv.appendChild(bubbleDiv);
+            chatMessagesContainer.appendChild(messageDiv);
+
+            // Scroll to bottom
+            chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+        }
+
+
+        console.log("Chat-focused layout loaded. Add more JS for full interactivity.");
+    </script>
+
+</body>
+</html>
